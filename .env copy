@@ -1,0 +1,4 @@
+NEXT_PUBLIC_APPWRITE_PROJECT_NAME = appwrite_project_name
+NEXT_PUBLIC_APPWRITE_PROJECT_ID = appwrite_project_id
+NEXT_PUBLIC_APPWRITE_ENDPOINT = appwrite_end_point
+APPWRITE_API_KEY = ***************************************************************************
