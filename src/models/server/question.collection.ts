@@ -73,4 +73,6 @@ export default async function createQuestionCollection() {
       ["asc"]
     ),
   ]);
+
+  console.log("Indexes are created!");
 }
