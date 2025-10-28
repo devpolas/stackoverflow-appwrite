@@ -32,5 +32,5 @@ export default async function createCommentCollection() {
     database.createStringAttribute(db, commentCollection, "authorId", 50, true),
   ]);
 
-  console.log("Comment Attributes are Created!");
+  console.log("Comment Collection Attributes are Created!");
 }

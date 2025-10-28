@@ -51,7 +51,7 @@ export default async function createQuestionCollection() {
     database.createStringAttribute(db, questionCollection, "title", 50, false),
   ]);
 
-  console.log("Question Attributes Created!");
+  console.log("Question Collection Attributes Created!");
 
   // create index
 
