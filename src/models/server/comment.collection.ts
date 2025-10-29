@@ -1,5 +1,5 @@
 import { Permission } from "node-appwrite";
-import { db, commentCollection, questionCollection } from "../name";
+import { db, commentCollection } from "../name";
 import { database } from "./config";
 
 export default async function createCommentCollection() {
