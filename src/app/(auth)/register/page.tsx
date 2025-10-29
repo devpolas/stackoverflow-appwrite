@@ -1,3 +1,5 @@
-export default function page() {
+"use client";
+
+export default function Register() {
   return <div>register</div>;
 }

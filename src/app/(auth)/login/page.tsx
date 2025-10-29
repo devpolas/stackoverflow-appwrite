@@ -1,7 +1,4 @@
-export default function page() {
-  return (
-    <div>
-      Login
-    </div>
-  )
+"use client";
+export default function Login() {
+  return <div>Login</div>;
 }
