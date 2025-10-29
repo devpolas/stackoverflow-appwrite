@@ -48,7 +48,6 @@ export default async function createQuestionCollection() {
       100,
       true
     ),
-    database.createStringAttribute(db, questionCollection, "title", 50, false),
   ]);
 
   console.log("Question Collection Attributes Created!");
