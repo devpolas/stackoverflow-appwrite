@@ -1,24 +1,24 @@
 "use client";
-import React from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { authStore } from "@/store/auth";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { useAuthStore } from "@/store/auth";
+
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const router = useRouter();
-  const pathname = usePathname();
-  const session = authStore((state) => state.session);
+  const { session } = useAuthStore();
 
-  React.useEffect(
-    function () {
-      if (!session) {
-        router.replace(`/login?redirect=${pathname}`);
-      }
-      if (session) {
-        router.replace("/");
-      }
-    },
-    [session, router, pathname]
-  );
+  useEffect(() => {
+    if (session) {
+      router.push("/");
+    }
+  }, [session, router]);
+
+  if (session) return null;
 
   return <div>{children}</div>;
 }

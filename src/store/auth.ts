@@ -28,7 +28,7 @@ interface IAuthSore {
   logout(): Promise<void>;
 }
 
-export const authStore = create<IAuthSore>()(
+export const useAuthStore = create<IAuthSore>()(
   persist(
     immer((set) => ({
       session: null,

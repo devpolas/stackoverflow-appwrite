@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["apikey", "appwrite", "Prefs", "stackoverflow"]
+  "cSpell.words": ["apikey", "appwrite", "Prefs", "stackoverflow"],
+  "postman.settings.dotenv-detection-notification-visibility": false
 }
