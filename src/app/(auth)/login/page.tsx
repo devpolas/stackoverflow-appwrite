@@ -11,15 +11,36 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useAuthStore } from "@/store/auth";
 import Link from "next/link";
 import { useActionState, useState } from "react";
 
 export default function LoginPage() {
+  const { login } = useAuthStore();
   const [isPending, setIsPending] = useState(false);
   const [isError, setIsError] = useState("");
 
   async function handelLogin(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const { email, password } = Object.fromEntries(formData);
+
+    if (!email || !password) {
+      setIsError("Please Provide Email and Password!");
+      return;
+    }
+
+    setIsPending(true);
+    setIsError("");
+
+    const loginResponse = await login(email.toString(), password.toString());
+
+    if (loginResponse.error) {
+      setIsError("Invalid Credential!");
+      setIsPending(false);
+      return;
+    }
+    setIsPending(false);
   }
   return (
     <div className='flex justify-center items-center p-8 max-w-full h-screen'>
