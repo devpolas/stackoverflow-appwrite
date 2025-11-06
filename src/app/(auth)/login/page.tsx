@@ -1,3 +1,4 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -11,15 +12,24 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
+import { useActionState, useState } from "react";
 
 export default function LoginPage() {
+  const [isPending, setIsPending] = useState(false);
+  const [isError, setIsError] = useState("");
+
+  async function handelLogin(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
   return (
     <div className='flex justify-center items-center p-8 max-w-full h-screen'>
       <Card className='w-full max-w-sm'>
         <CardHeader>
-          <CardTitle>Login to your account</CardTitle>
-          <CardDescription>
-            Enter your email below to login to your account
+          <CardTitle>
+            {isPending ? "Processing....." : "Login to your account"}
+          </CardTitle>
+          <CardDescription className='text-red-600'>
+            {isError ? isError : ""}
           </CardDescription>
           <CardAction>
             <Link
@@ -31,13 +41,15 @@ export default function LoginPage() {
           </CardAction>
         </CardHeader>
         <CardContent>
-          <form>
+          <form onSubmit={handelLogin}>
             <div className='flex flex-col gap-6'>
               <div className='gap-2 grid'>
                 <Label htmlFor='email'>Email</Label>
                 <Input
                   id='email'
                   type='email'
+                  name='email'
+                  onFocus={() => setIsError("")}
                   placeholder='user@example.com'
                   required
                 />
@@ -55,18 +67,24 @@ export default function LoginPage() {
                 <Input
                   id='password'
                   type='password'
+                  onFocus={() => setIsError("")}
+                  name='password'
                   placeholder='Enter Your Password'
                   required
                 />
               </div>
             </div>
+            <CardFooter className='flex-col gap-2 mt-4 p-4'>
+              <Button
+                disabled={isPending}
+                type='submit'
+                className='w-full transition-all hover:-translate-y-0.5 active:translate-y-0 duration-300 hover:cursor-pointer transform'
+              >
+                Login
+              </Button>
+            </CardFooter>
           </form>
         </CardContent>
-        <CardFooter className='flex-col gap-2'>
-          <Button type='submit' className='w-full hover:cursor-pointer'>
-            Login
-          </Button>
-        </CardFooter>
       </Card>
     </div>
   );
