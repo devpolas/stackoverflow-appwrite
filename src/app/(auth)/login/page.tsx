@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuthStore } from "@/store/auth";
 import Link from "next/link";
-import { useActionState, useState } from "react";
+import { useState } from "react";
 
 export default function LoginPage() {
   const { login } = useAuthStore();
